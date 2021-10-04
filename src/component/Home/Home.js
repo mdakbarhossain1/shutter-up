@@ -12,15 +12,19 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
+    // Use State For services
     const [servicess, setServicess] = useState([]);
+    // Use State For Gallery Images
     const [gallerys, setGallerys] = useState([]);
 
+    // Data Load for hero services section
     useEffect(() => {
         fetch('heroservices.JSON')
             .then(res => res.json())
             .then(data => setServicess(data))
     }, []);
 
+    // data load for Gallery Section
     useEffect(() => {
         fetch('homeGalleryData.JSON')
             .then(res => res.json())
@@ -53,12 +57,14 @@ const Home = () => {
             </div>
             <Container className="text-center">
                 <h1 className="text-center my-3 py-2">Our Services</h1>
+                {/* service section  */}
                 <Row className="py-2 my-2">
                     {
                         servicess.map(services => <ShowServices key={services.id} services={services}></ShowServices>)
                     }
                 </Row>
 
+                {/* Gallery Section  */}
                 <h1 className="text-center my-3 py-2">Gallery</h1>
                 <Row className="g-2 my-2 py-2">
                     {
